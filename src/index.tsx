@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import { FirebaseAppProvider, AuthCheck } from 'reactfire';
-import { Home, Contact, About } from './components';
+import { Home, Contact, About, SignIn, Inventory } from './components';
 // import 'styles.css';
 import reportWebVitals from './reportWebVitals';
 // import { firebaseConfig } from './firebaseConfig';
@@ -21,18 +21,18 @@ ReactDOM.render(
                     <Route exact path='/'>
                         <Home title={title} />
                     </Route>
-                    {/* <Route exact path='/inventory'>
+                    <Route exact path='/inventory'>
                         <Inventory></Inventory>
-                    </Route> */}
+                    </Route>
                     <Route exact path='/contact'>
                         <Contact></Contact>
                     </Route>
                     <Route exact path='/about'>
                         <About></About>
                     </Route>
-                    {/* <Route exact path='/signin'>
+                    <Route exact path='/signin'>
                         <SignIn></SignIn>
-                    </Route> */}
+                    </Route>
                 </Switch>
             </Router>
         {/* </Provider>

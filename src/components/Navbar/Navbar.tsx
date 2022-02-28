@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-import { AuthCheck } from 'reactfire';
+// import { AuthCheck } from 'reactfire';
 import welcomelogo from '../../assets/images/welcomelogo.jpg';
 
 const useStyles = makeStyles({
@@ -46,8 +46,8 @@ const useStyles = makeStyles({
     width100:{
         width: '100%',
     },
-    width40:{
-        width: '40%',
+    width50:{
+        width: '50%',
     },
     padside:{
         paddingRight: '10px',
@@ -68,7 +68,7 @@ export const Navbar = () => {
             <div className={`${classes.navlogo}`}>
                 <div className={`${classes.logo} ${classes.padside}`}/>
             </div>
-            <div className={`${classes.width40}`}>
+            <div className={`${classes.width50}`}>
                 <ul className={`${classes.ul} ${classes.row} ${classes.spaceBetween}`}>
                     {/* <AuthCheck fallback = { */}
                         <li>
@@ -77,6 +77,11 @@ export const Navbar = () => {
                             </Button>
                         </li>
                     {/* }> */}
+                        <li>
+                            <Button>
+                                <Link to='/' className={`${classes.navbarItem} ${classes.padside}`}>Home</Link>
+                            </Button>
+                        </li>
                         <li>
                             <Button>
                                 <Link to='/Inventory' className={`${classes.navbarItem} ${classes.padside}`}>Vehicle Inventory</Link>
