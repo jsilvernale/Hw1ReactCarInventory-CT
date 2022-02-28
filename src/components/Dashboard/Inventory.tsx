@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useFetchData } from '../../CustomHooks'
+import { Link } from 'react-router-dom';
+import { Paper } from '@material-ui/core';
 import { Drawer as MUIDrawer, 
 ListItem,
 List,
@@ -12,6 +15,11 @@ AppBar,
 Toolbar,
 IconButton,
 Typography,
+Dialog,
+DialogActions,
+DialogContent,
+DialogContentText,
+DialogTitle,
 Divider,
 Button 
 } from '@material-ui/core';
@@ -20,6 +28,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import clsx from 'clsx';
+import { AddCarForm } from '../AddCarForm'
 import { DataTable } from '../../components/DataTable';
 import { RouteComponentProps, withRouter, Route, Switch } from 'react-router-dom';
 
@@ -103,6 +112,7 @@ export const Inventory = withRouter(( props: DashProps ) => {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = useState(false);
+    const [dialogOpen, setDialogOpen] = useState(false);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -110,6 +120,14 @@ export const Inventory = withRouter(( props: DashProps ) => {
 
     const handleDrawerClose = () => {
         setOpen(false);
+    };
+    
+    const handleDialogClickOpen = () => {
+        setDialogOpen(true);
+    };
+
+    const handleDialogClickClose = () => {
+        setDialogOpen(false);
     };
     
     const itemsList = [
@@ -135,9 +153,19 @@ export const Inventory = withRouter(( props: DashProps ) => {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant='h6' noWrap>
-                    Dashboard
+                    Inventory
                 </Typography>
-                <Button className={classes.toolbar_button}>Add New Car</Button>
+                <Button className={classes.toolbar_button} onClick={handleDialogClickOpen}>Add New Car</Button>
+                <Dialog open={dialogOpen} onClose={handleDialogClickClose} aria-labelledby='form-dialog-title'>
+                    <DialogTitle id='form-dialog-title'>Add To the Inventory</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText></DialogContentText>
+                        <AddCarForm />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleDialogClickClose} color='primary'>Nevermind</Button>
+                    </DialogActions>
+                </Dialog>
             </Toolbar>
         </AppBar>
         <MUIDrawer className={classes.drawer} variant='persistent' anchor='left' open={open} classes={{paper:classes.drawerPaper,}}>

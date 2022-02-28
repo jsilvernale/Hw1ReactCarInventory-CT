@@ -7,15 +7,15 @@ import { Home, Contact, About, SignIn, Inventory } from './components';
 import reportWebVitals from './reportWebVitals';
 // import { firebaseConfig } from './firebaseConfig';
 // import 'firebase/auth';
-// import { Provider } from 'react-redux';
-// import { store } from './redux/store';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 let title = "My Car Collection"
 
 ReactDOM.render(
     <React.StrictMode>
-        {/* <FirebaseAppProvider firebaseConfig={firebaseConfig} suspense={true}>
-        <Provider store={store}> */}
+        {/* <FirebaseAppProvider firebaseConfig={firebaseConfig} suspense={true}> */}
+        <Provider store={store}>
             <Router>
                 <Switch>
                     <Route exact path='/'>
@@ -35,8 +35,8 @@ ReactDOM.render(
                     </Route>
                 </Switch>
             </Router>
-        {/* </Provider>
-        </FirebaseAppProvider>         */}
+        </Provider>
+    {/* </FirebaseAppProvider>         */}
     </React.StrictMode>,
     document.getElementById('root')
 );
